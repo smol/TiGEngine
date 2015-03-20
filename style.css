@@ -12,6 +12,6 @@
 
 
 
-body { background-color: cornflowerblue;font-family: 'kenpixel'; }
+body { padding: 0px;margin:0px}
 
-canvas { }
+canvas { background-color: cornflowerblue; margin: auto; display: block; }

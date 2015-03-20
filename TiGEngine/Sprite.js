@@ -1,17 +1,43 @@
-var Sprite = function(image_src){
+var Sprite = function(image_key){
+    var instance = this;
+    
+    this.sourceRectangle = {x:0,y:0,width:-1,height:-1};
+	this.size = {width:-1,height:-1};
+    
     this.isLoaded = false;
     
-    this.image = new Image();
-    this.image.src = image_src;
+    this.image = textureManager.GetImage(image_key, function(){
+        
+        if (instance.size.width == -1)
+            instance.size.width = instance.image.naturalWidth;
+        
+        if (instance.size.height == -1)
+            instance.size.height = instance.image.naturalHeight;
+		
+		if (instance.sourceRectangle.width == -1)
+			instance.sourceRectangle.width = instance.image.naturalWidth;
+		
+		if (instance.sourceRectangle.height == -1)
+			instance.sourceRectangle.height = instance.image.naturalHeight;
+        
+        console.log("size", instance.size);
+    });
     
-    var instance = this;
-    this.image.onload = function(){
-        instance.isLoaded = true
-    };
+    console.log("image", this.image);
     
+    
+    
+    
+//    this.image.onload = function(){
+//        instance.isLoaded = true
+//        
+//    };
+//    
 	this.animations = null;
 	this.currentAnimation = null;
 	this.position = {x:0,y:0};
+	
+
 	
 };
 
@@ -42,20 +68,8 @@ Sprite.prototype.update = function(){
 };
 
 Sprite.prototype.draw = function(ctx){
-    if (this.isLoaded) {
-        if (this.currentAnimation == null)
-        	Context2d.drawImage(this.image, this.position.x,this.position.y);
-		else {
-			var currentAnim = this.animations.animations[this.currentAnimation];
-			Context2d.drawImage(this.image, 
-							   currentAnim[this.animIndex].x,currentAnim[this.animIndex].y, 
-							   currentAnim[this.animIndex].width,currentAnim[this.animIndex].height,
-							   this.position.x,this.position.y,
-							   currentAnim[this.animIndex].width,currentAnim[this.animIndex].height);
-			
-			
-		}
-			
+    if (this.image.isLoaded) {
+        Context2d.drawImage(this.image, this.sourceRectangle.x,this.sourceRectangle.y, this.sourceRectangle.width, this.sourceRectangle.height, this.position.x,this.position.y, this.size.width, this.size.height);
     }
 };
 

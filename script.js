@@ -16,14 +16,19 @@ window.onload = function(){
 	}
 	
     var Game = function(){
-        this.core = new Core("gameCanvas", 1224, 918, this);
+        this.core = new Core("gameCanvas", 800, 320, this);
 		this.core.canvas.focus();
         
+        
+        textureManager.LoadImage("HALL", "hall.png");
+        textureManager.LoadImage("BUBBLE", "bubble.png");
+        textureManager.LoadImage("SPRITESHEET", "spritesheet.png");
+        
 		this.level = new Level();
-		this.core.AddSprite(this.level);
+		this.core.AddGameObject(this.level);
 		
 		this.heroe = new Heroe(this.level, this);
-		this.core.AddSprite(this.heroe);
+		this.core.AddGameObject(this.heroe);
 		
 //        this.heroe = core.AddSprite("alienGreen.png");
 //		

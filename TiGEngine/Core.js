@@ -25,14 +25,30 @@ var Context2d = null;
 
 var Core = function(id_canvas, width, height, game){
     this.game = game;
-    this.sprites = [];
+    this.gameObjects = [];
     this.FPS = 1;
     this.width = width;
     this.height = height;
+	this.Ratio = height / width;
     console.log("FPS Setted", 1000 / this.FPS);
     this.canvas = document.getElementById(id_canvas);
     
-    this.canvas.setAttribute("style", "background-color:red");
+	var instance = this;
+	/*window.onresize = function(){
+		instance.width = this.innerWidth;
+		instance.height = this.innerHeight * instance.Ratio;
+		
+		instance.canvas.setAttribute("width", this.innerWidth);
+		instance.canvas.setAttribute("height", this.innerHeight * instance.Ratio);
+		
+		Context2d.canvas.width = this.innerWidth;
+		Context2d.canvas.height = this.innerHeight * instance.Ratio;
+		
+	    Context2d.font = "15px kenpixel";
+		Context2d.fillStyle = "black";
+	};*/
+	
+//    this.canvas.setAttribute("style", "background-color:red");
     this.canvas.setAttribute("width", width);
     this.canvas.setAttribute("height", height);
     
@@ -47,16 +63,13 @@ var Core = function(id_canvas, width, height, game){
 	document.addEventListener("keyup", onKey, true);
 	
 	function onKey(e){
-//		console.log(e, e.type);
 		e = e || event;
 		KeyDown[e.keyCode] = e.type == 'keydown';
 	};
 	
 	function timestamp() {
-	  return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
+		return window.performance && window.performance.now ? window.performance.now() : new Date().getTime();
 	}
-	
-	var instance = this;
 	
 	var now;
 	var dt = 0;
@@ -77,10 +90,6 @@ var Core = function(id_canvas, width, height, game){
 		this.requestAnimFrame(frame);
 	}
 	frame();
-	
-//    this.update(this);
-//    this.draw(this);
-    
 };
 
 
@@ -104,30 +113,51 @@ window.requestAnimFrame = (function(){
           };
 })();
 
+
+
 Core.prototype.update = function(){
-	for (var i = 0; i < this.sprites.length; i++){
-        this.sprites[i].update();
-    }
+	
+	function update(gameObjects, root_position){
+		for (var i = 0; i < gameObjects.length; i++){
+			gameObjects[i].update();
+			if (gameObjects[i].children) {
+				update(gameObjects[i].children);
+			}
+		}	
+	}
+	
+	update(this.gameObjects);
+	
 	if (this.game != null)
     	this.game.update && this.game.update();
 };
 
 Core.prototype.draw = function(){
+	
+	function draw(gameObjects){
+		for (var i = 0; i < gameObjects.length; i++){
+			gameObjects[i].draw();
+			if (gameObjects[i].children) {
+				draw(gameObjects[i].children);
+			}
+		}	
+	}
+	
 	Context2d.save();
 	
 	Context2d.setTransform(1,0,0,1,0,0);
     Context2d.clearRect(0,0, this.width, this.height);
     Context2d.restore();
 	
-    for (var i = 0; i < this.sprites.length; i++){
-        this.sprites[i].draw();
-    }
+	
+	draw(this.gameObjects);
+    
     if (this.game != null)
     	this.game.draw && this.game.draw();    
 };
 
-Core.prototype.AddSprite = function(sprite){
-    this.sprites.push(sprite);
-    return sprite;
+Core.prototype.AddGameObject = function(gameObject){
+    this.gameObjects.push(gameObject);
+    return gameObject;
 
 };

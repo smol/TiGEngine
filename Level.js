@@ -1,5 +1,5 @@
 var Level = function(){
-	this.sprite = new Sprite("hall.png");
+	this.sprite = new Sprite("HALL");
 	this.sprite.position = {x:0,y:0};
 
 	this.collisions = [
