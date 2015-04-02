@@ -1,0 +1,16 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "../javascript",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false
+    },
+    "filesGlob": [
+        "!./typescript/**/*.ts",
+        "!./node_modules/**/*.ts"
+    ]
+}

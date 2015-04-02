@@ -1,0 +1,32 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "../javascript",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./Bubble.ts",
+        "./Heroe.ts",
+        "./Level.ts",
+        "./TiGConfig.ts",
+        "./TiGEngine/Core.ts",
+        "./TiGEngine/GameObject.ts",
+        "./TiGEngine/Input.ts",
+        "./TiGEngine/Sprite.ts",
+        "./TiGEngine/TextureManager.ts",
+        "./TiGEngine/Trigger.ts",
+        "./TiGEngine/Utils/Rectangle.ts",
+        "./TiGEngine/Utils/Time.ts",
+        "./TiGEngine/Utils/Vector2.ts",
+        "./script.ts"
+    ]
+}
