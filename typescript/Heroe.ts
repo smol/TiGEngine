@@ -1,3 +1,5 @@
+/// <reference path="./tigEngine.d.ts"/>
+
 class Heroe extends GameObject {
 	private game : any;
 	private level : any;

@@ -76,10 +76,12 @@ class Core {
     }
 
     public CameraPosition(position){
+
     	var diff = {
     		x : position.x - this.cameraPosition.x,
     		y : position.y - this.cameraPosition.y
     	}
+        console.info(diff);
         Core.Context2d.transform(1,0,0,1,diff.x,diff.y);
 
     	this.cameraPosition = position;

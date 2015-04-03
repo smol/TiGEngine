@@ -11,6 +11,8 @@
     },
     "filesGlob": [
         "./**/*.ts",
+        "./**/*.d.ts",
+        "!./TiGEngine/**/**.ts",
         "!./node_modules/**/*.ts"
     ],
     "files": [
@@ -18,16 +20,7 @@
         "./Heroe.ts",
         "./Level.ts",
         "./TiGConfig.ts",
-        "./TiGEngine/Core.ts",
-        "./TiGEngine/GameObject.ts",
-        "./TiGEngine/Input.ts",
-        "./TiGEngine/Sprite.ts",
-        "./TiGEngine/TextureManager.ts",
-        "./TiGEngine/Trigger.ts",
-        "./TiGEngine/Utils/Rectangle.ts",
-        "./TiGEngine/Utils/Time.ts",
-        "./TiGEngine/Utils/Vector2.ts",
-        "./javascript/TiGEngine/Core.d.ts",
-        "./script.ts"
+        "./script.ts",
+        "./tigEngine.d.ts"
     ]
 }

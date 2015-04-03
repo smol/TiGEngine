@@ -1,10 +1,11 @@
 {
     "version": "1.4.1",
+    "compileOnSave": false,
     "compilerOptions": {
         "target": "es5",
         "module": "commonjs",
-        "outDir": "../javascript/TiGEngine",
-        "declaration": false,
+        "outDir": "../",
+        "declaration": true,
         "noImplicitAny": false,
         "removeComments": true,
         "noLib": false
