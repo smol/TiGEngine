@@ -1,3 +1,4 @@
+/// <reference path="Utils/Time.ts"/>
 
 var KEY = {
     BACKSPACE: 8,
@@ -57,13 +58,13 @@ class Input {
         return Input.keys[keycode].IsPressed;
     }
 
-    constructor(){
+    constructor(config : {key : number, cooldown : number}[]){
         Input.keys = [];
 
         var instance = this;
 
-        for (var i = 0; i < config.key.length; i++){
-            Input.keys[config.key[i].key] = new InputKey(config.key[i].cooldown);
+        for (var i = 0; i < config.length; i++){
+            Input.keys[config[i].key] = new InputKey(config[i].cooldown);
         }
 
         function onKey(e){

@@ -1,0 +1,27 @@
+{
+    "version": "1.4.1",
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "../javascript/TiGEngine",
+        "declaration": false,
+        "noImplicitAny": false,
+        "removeComments": true,
+        "noLib": false
+    },
+    "filesGlob": [
+        "./**/*.ts",
+        "!./node_modules/**/*.ts"
+    ],
+    "files": [
+        "./Core.ts",
+        "./GameObject.ts",
+        "./Input.ts",
+        "./Sprite.ts",
+        "./TextureManager.ts",
+        "./Trigger.ts",
+        "./Utils/Rectangle.ts",
+        "./Utils/Time.ts",
+        "./Utils/Vector2.ts"
+    ]
+}

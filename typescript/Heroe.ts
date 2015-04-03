@@ -43,9 +43,9 @@ class Heroe extends GameObject {
 		var direction = {x:0,y:0};
 		// console.info('input',Input);
 		if (Input.Key(KEY.RIGHT)){
-			direction.x = 50 * Time.DeltaTime;
+			direction.x = 20 * Time.DeltaTime;
 		} else if (Input.Key(KEY.LEFT)){
-			direction.x = -50 * Time.DeltaTime;
+			direction.x = -20 * Time.DeltaTime;
 		}
 
 		this.sprite.CurrentAnimation = "idle";

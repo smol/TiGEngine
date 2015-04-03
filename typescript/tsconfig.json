@@ -27,6 +27,7 @@
         "./TiGEngine/Utils/Rectangle.ts",
         "./TiGEngine/Utils/Time.ts",
         "./TiGEngine/Utils/Vector2.ts",
+        "./javascript/TiGEngine/Core.d.ts",
         "./script.ts"
     ]
 }

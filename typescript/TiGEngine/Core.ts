@@ -1,7 +1,9 @@
+/// <reference path="Utils/Time.ts"/>
 /// <reference path="Input.ts"/>
 
+
 class Core {
-    static Context2d : CanvasRenderingContext2D;
+    public static Context2d : CanvasRenderingContext2D;
 
     private input : Input;
 
@@ -17,8 +19,8 @@ class Core {
 
     private canvas : HTMLCanvasElement;
 
-    constructor(id_canvas : string, width : number, height : number, game : any){
-        this.input = new Input();
+    constructor(id_canvas : string, width : number, height : number, game : any, config : any){
+        this.input = new Input(config.key || null);
 
         this.game = game;
 

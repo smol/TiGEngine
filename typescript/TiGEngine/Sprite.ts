@@ -1,3 +1,5 @@
+/// <reference path="Core.ts"/>
+
 class Sprite {
     SourceRectangle : Rectangle;
     Size : {width:number,height:number};

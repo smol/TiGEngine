@@ -12,7 +12,7 @@ var jsonAnimation = {
 
 window.onload = function(){
     var Game = function(){
-        this.core = new Core("gameCanvas", 800, 460, this);
+        this.core = new Core("gameCanvas", 800, 460, this, config);
 		this.core.canvas.focus();
 
 
