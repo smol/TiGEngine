@@ -1,3 +1,29 @@
+declare class Core {
+    static Context2d: CanvasRenderingContext2D;
+    private input;
+    private game;
+    private FPS;
+    private gameObjects;
+    private width;
+    private height;
+    private ratio;
+    private cameraPosition;
+    private canvas;
+    constructor(id_canvas: string, width: number, height: number, game: any, config: any);
+    CameraPosition(position: Vector2): void;
+    AddGameObject(gameObject: any): any;
+    Update(): void;
+    Draw(): void;
+}
+declare class GameObject {
+    private parent;
+    private childIndex;
+    private children;
+    Position: Vector2;
+    constructor();
+    protected AddChild(gameObject: GameObject): void;
+    protected RemoveChild(gameObject: GameObject): void;
+}
 declare class Time {
     static DeltaTime: number;
     static update(dt: any): void;
@@ -65,39 +91,13 @@ declare class InputKey {
     update(): void;
 }
 declare class Input {
-    private static keys;
+    static keys: InputKey[];
     static Key(keycode: number): boolean;
     constructor(config: {
         key: number;
         cooldown: number;
     }[]);
     update(): void;
-}
-declare class Core {
-    static Context2d: CanvasRenderingContext2D;
-    private input;
-    private game;
-    private FPS;
-    private gameObjects;
-    private width;
-    private height;
-    private ratio;
-    private cameraPosition;
-    private canvas;
-    constructor(id_canvas: string, width: number, height: number, game: any, config: any);
-    CameraPosition(position: any): void;
-    AddGameObject(gameObject: any): any;
-    Update(): void;
-    Draw(): void;
-}
-declare class GameObject {
-    private parent;
-    private childIndex;
-    private children;
-    Position: Vector2;
-    constructor();
-    protected AddChild(gameObject: GameObject): void;
-    protected RemoveChild(gameObject: GameObject): void;
 }
 declare class Sprite {
     SourceRectangle: Rectangle;
