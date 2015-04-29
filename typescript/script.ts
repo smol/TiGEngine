@@ -1,5 +1,3 @@
-/// <reference path="./tigEngine.d.ts"/>
-
 var jsonAnimation = {
 	source:"spritesheet.png",
 	animations : {

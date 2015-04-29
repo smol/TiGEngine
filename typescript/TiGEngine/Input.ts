@@ -1,4 +1,5 @@
 /// <reference path="Utils/Time.ts"/>
+/// <reference path="Utils/Vector2.ts"/>
 
 var KEY = {
     BACKSPACE: 8,
@@ -21,7 +22,13 @@ var KEY = {
     TILDA:    192
   };
 
-class InputKey {
+var MOUSE_BUTTON = {
+    LEFT: 0,
+    MIDDLE: 1,
+    RIGHT: 2
+};
+
+class InputInfo {
     public Cooldown : number;
     private deltaTime : number;
 
@@ -51,20 +58,32 @@ class InputKey {
     }
 }
 
-class Input {
-    private static keys : InputKey[];
+class MouseInfo {
+    public static Position : Vector2 = Vector2.Zero;
+}
 
-    public static Key(keycode : number) : boolean {
-        return Input.keys[keycode].IsPressed;
+class Input {
+    static keys: InputInfo[];
+    static mouseButtons: boolean[];
+    
+    public static MousePosition: { x: number; y: number } = { x: 0, y: 0 };
+
+    public static MouseButton(buttoncode: number): boolean {
+        return this.mouseButtons[buttoncode];
     }
 
-    constructor(config : {key : number, cooldown : number}[]){
+    public static Key(keycode : number) : boolean {
+        return this.keys[keycode].IsPressed;
+    }
+
+    constructor(core : Core, config : {key : number; cooldown : number}[]){
         Input.keys = [];
+        Input.mouseButtons = [];
 
         var instance = this;
 
         for (var i = 0; i < config.length; i++){
-            Input.keys[config[i].key] = new InputKey(config[i].cooldown);
+            Input.keys[config[i].key] = new InputInfo(config[i].cooldown);
         }
 
         function onKey(e){
@@ -75,8 +94,26 @@ class Input {
                 Input.keys[keycode].IsPressed = e.type == 'keydown';
 
             // console.info(keycode, Input.keys[keycode].IsPressed);
+            }
         }
+
+        function mouseMove(e) {
+            var x: number = e.x - (Core.Canvas.offsetLeft + core.CameraPosition.x);
+            var y: number = e.y - (Core.Canvas.offsetTop + core.CameraPosition.y);
+
+            Input.MousePosition.x = x;
+            Input.MousePosition.y = y;
         }
+
+        function mouseDown(e) {
+            mouseMove(e);
+
+            Input.mouseButtons[e.button] = e.type == "mousedown";
+        }
+
+        Core.Canvas.addEventListener("mousedown", mouseDown, true);
+        Core.Canvas.addEventListener("mouseup", mouseDown, true);
+        Core.Canvas.addEventListener("mousemove", mouseMove, true);
 
         document.addEventListener("keydown", onKey, true);
         document.addEventListener("keyup", onKey, true);

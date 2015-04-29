@@ -1,6 +1,3 @@
-/// <reference path="Utils/Time.ts"/>
-/// <reference path="Input.ts"/>
-
 
 class Core {
     public static Context2d : CanvasRenderingContext2D;
@@ -8,19 +5,30 @@ class Core {
     private input : Input;
 
     private game : any;
-    private FPS : number;
-    private gameObjects : any[];
+    private FPS: number;
+
+    private gameObjects: any[];
+    private uiviews : UIView[];
 
     private width : number;
     private height : number;
     private ratio : number;
 
-    private cameraPosition : {x:number,y:number};
+    private cameraPosition: { x: number; y: number };
 
-    private canvas : HTMLCanvasElement;
+    public get CameraPosition(): { x: number; y: number } {
+        return this.cameraPosition;
+    }
 
-    constructor(id_canvas : string, width : number, height : number, game : any, config : any){
-        this.input = new Input(config.key || null);
+    private static canvas: HTMLCanvasElement;
+    public static get Canvas(): HTMLCanvasElement {
+        return this.canvas;
+    }
+    
+
+    constructor(id_canvas: string, width: number, height: number, game: any, config: any) {
+        Core.canvas = <HTMLCanvasElement> document.getElementById(id_canvas);
+        this.input = new Input(this, config.key || null);
 
         this.game = game;
 
@@ -30,18 +38,18 @@ class Core {
 
         this.ratio = this.height / this.width;
 
-        this.canvas = <HTMLCanvasElement> document.getElementById(id_canvas);
-
+        
+        
         this.gameObjects = [];
+        this.uiviews = [];
 
-        this.canvas.setAttribute("width", width.toString());
-        this.canvas.setAttribute("height", height.toString());
+        Core.canvas.setAttribute("width", width.toString());
+        Core.canvas.setAttribute("height", height.toString());
 
-        Core.Context2d = this.canvas.getContext("2d");
+        Core.Context2d = Core.canvas.getContext("2d");
         Core.Context2d.transform(1,0,0,1,0,0);
 
         this.cameraPosition = {x:0,y:0};
-        this.CameraPosition({x:0,y:0});
 
         console.info("context2d", Core.Context2d);
 
@@ -75,16 +83,14 @@ class Core {
         frame();
     }
 
-    public CameraPosition(position){
-
+    public CameraTranslation(position : Vector2) {
     	var diff = {
-    		x : position.x - this.cameraPosition.x,
-    		y : position.y - this.cameraPosition.y
-    	}
-        console.info(diff);
+    		x : position.X - this.cameraPosition.x,
+    		y : position.Y - this.cameraPosition.y
+        }
         Core.Context2d.transform(1,0,0,1,diff.x,diff.y);
 
-    	this.cameraPosition = position;
+        this.cameraPosition = { x: position.X, y: position.Y };
     }
 
 
@@ -94,10 +100,17 @@ class Core {
         return gameObject;
     }
 
+    public AddSubview(view: UIView) {
+        
+        this.uiviews.push(view);
+    }
+
     public Update(){
         function update(gameObjects){
-    		for (var i = 0; i < gameObjects.length; i++){
-    			gameObjects[i].update();
+    		for (var i = gameObjects.length - 1; i >= 0; i--){
+                gameObjects[i].Update();
+                gameObjects[i].UpdateInput();
+
     			if (gameObjects[i].children) {
     				update(gameObjects[i].children);
     			}
@@ -108,13 +121,13 @@ class Core {
     	update(this.gameObjects);
 
     	if (this.game != null)
-        	this.game.update && this.game.update();
+        	this.game.Update && this.game.Update();
     }
 
-    public Draw(){
+    public Draw() {
         function draw(gameObjects : any[]){
     		for (var i = 0; i < gameObjects.length; i++){
-    			gameObjects[i].draw();
+    			gameObjects[i].Draw();
     			if (gameObjects[i].children) {
     				draw(gameObjects[i].children);
     			}
@@ -130,7 +143,9 @@ class Core {
 
     	draw(this.gameObjects);
 
+        draw(this.uiviews);
+
         if (this.game != null)
-        	this.game.draw && this.game.draw();
+        	this.game.Draw && this.game.Draw();
     }
 }

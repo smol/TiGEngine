@@ -2,8 +2,8 @@
 
 class Sprite {
     SourceRectangle : Rectangle;
-    Size : {width:number,height:number};
-    Position : {x:number,y:number};
+    Size : {width:number;height:number};
+    Position : {x:number;y:number};
 
     private isLoaded : boolean;
     private image : Asset;
@@ -26,7 +26,7 @@ class Sprite {
         this.isLoaded = false;
 
         var instance = this;
-        this.image = TextureManager.GetImage(asset_key, () => {
+        this.image = TextureManager.GetImage(asset_key,() => {
             if (this.Size.width == -1)
                 this.Size.width = this.image.Width;
 
@@ -49,7 +49,7 @@ class Sprite {
     	this.updateAnimation(this);
     }
 
-    public getBounds(){
+    public getBounds() : Rectangle {
     	var rect = this.animations.animations[this.currentAnimation][this.animationIndex];
     	return new Rectangle({x:this.Position.x, y:this.Position.y, width:rect.width,height:rect.height});
     }
@@ -68,7 +68,7 @@ class Sprite {
     }
 
     public draw(){
-        if (this.image.IsLoaded)
+        if (this.image && this.image.IsLoaded)
             Core.Context2d.drawImage(this.image.getImage(), this.SourceRectangle.x,this.SourceRectangle.y, this.SourceRectangle.width, this.SourceRectangle.height, this.Position.x,this.Position.y, this.Size.width, this.Size.height);
     }
 }

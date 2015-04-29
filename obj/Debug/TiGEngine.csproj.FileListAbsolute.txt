@@ -1,0 +1,4 @@
+G:\Developpement\TiGEngine\bin\TiGEngine.dll
+G:\Developpement\TiGEngine\bin\TiGEngine.pdb
+G:\Developpement\TiGEngine\obj\Debug\TiGEngine.dll
+G:\Developpement\TiGEngine\obj\Debug\TiGEngine.pdb

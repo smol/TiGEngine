@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resume", "Resume.csproj", "{3F13E758-EACF-4D95-9E16-2B479CECD4CD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA} = {C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TiGEngine", "typescript\TiGEngine\TiGEngine.csproj", "{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardGame", "..\CardGame\thegame\public\CardGame.csproj", "{5EA22F61-50DF-4DE1-81A2-A5218D00E1EB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA} = {C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F13E758-EACF-4D95-9E16-2B479CECD4CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F13E758-EACF-4D95-9E16-2B479CECD4CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F13E758-EACF-4D95-9E16-2B479CECD4CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7244A1F-AC42-47E1-82DA-1C5B8E9AFDDA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EA22F61-50DF-4DE1-81A2-A5218D00E1EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EA22F61-50DF-4DE1-81A2-A5218D00E1EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EA22F61-50DF-4DE1-81A2-A5218D00E1EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EA22F61-50DF-4DE1-81A2-A5218D00E1EB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,4 +1,6 @@
 /// <reference path="./tigEngine.d.ts"/>
+//move ./typescript/TiGEngine/tigEngine.js ./javascript/
+//move./typescript / TiGEngine / tigEngine.d.ts./typescript /
 
 class Heroe extends GameObject {
 	private game : any;

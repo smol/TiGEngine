@@ -20,7 +20,6 @@
         "./Heroe.ts",
         "./Level.ts",
         "./TiGConfig.ts",
-        "./script.ts",
-        "./tigEngine.d.ts"
+        "./script.ts"
     ]
 }

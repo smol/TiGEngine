@@ -8,14 +8,14 @@ class Rectangle {
 		return this.y + this.height;
 	}
 
-	constructor(rect : {x : number, y : number, width : number, height : number}){
+	constructor(rect : {x : number; y : number; width : number ; height : number}){
 		this.x = rect.x;
 		this.y = rect.y;
 		this.width = rect.width;
 		this.height = rect.height;
 	}
 
-	public Size() : {width : number, height : number} {
+	public Size() : {width : number; height : number} {
 		return {width : this.width, height : this.height };
 	}
 

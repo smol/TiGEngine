@@ -47,6 +47,8 @@ class TextureManager {
 
 	public static GetImage(key : string, callback : () => void){
 		var image = this.textures[key];
+	    if (!image)
+            return null;
 
 		if (image.IsLoaded)
 			image.Callback && image.Callback();
@@ -60,6 +62,6 @@ class TextureManager {
 
 	public static LoadImage(key : string, src : string){
 		var image = new Asset(src, null);
-	    TextureManager.textures[key] = image;
+	    this.textures[key] = image;
 	}
 }

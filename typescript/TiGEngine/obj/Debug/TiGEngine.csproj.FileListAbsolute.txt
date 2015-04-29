@@ -1,0 +1,6 @@
+G:\Developpement\TiGEngine\typescript\TiGEngine\bin\TiGEngine.dll
+G:\Developpement\TiGEngine\typescript\TiGEngine\bin\TiGEngine.pdb
+G:\Developpement\TiGEngine\typescript\TiGEngine\obj\Debug\TiGEngine.dll
+G:\Developpement\TiGEngine\typescript\TiGEngine\obj\Debug\TiGEngine.pdb
+G:\Developpement\TiGEngine\typescript\TiGEngine\bin\TiGEngine.dll.config
+G:\Developpement\TiGEngine\typescript\TiGEngine\obj\Debug\TiGEngine.csprojResolveAssemblyReference.cache
