@@ -1,3 +1,5 @@
+/// <reference path="./TiGEngine/Utils/Rectangle.ts"/>
+
 var level = [
 	{
 		layers : [],

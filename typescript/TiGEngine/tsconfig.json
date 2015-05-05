@@ -21,6 +21,10 @@
         "./Sprite.ts",
         "./TextureManager.ts",
         "./Trigger.ts",
+        "./UIView/UIButton.ts",
+        "./UIView/UIList.ts",
+        "./UIView/UIText.ts",
+        "./UIView/UIView.ts",
         "./Utils/Rectangle.ts",
         "./Utils/Time.ts",
         "./Utils/Vector2.ts"

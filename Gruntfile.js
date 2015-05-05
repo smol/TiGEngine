@@ -3,13 +3,17 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		ts: {
 			default : {
-				outDir:'javascript',
-				src: ["typescript/**/*.ts", "!node_modules/**/*.ts"],
+				src: ["typescript/TiGEngine/**/*.ts", "!node_modules/**/*.ts"],
+				out:'../CardGame/thegame/public/javascripts/tigEngine.js',
+				reference : '../CardGame/thegame/public/typescripts/tigEngine.d.ts',				
 				options:{
 					module: "amd" | "commonjs" | "",
 					sourceMap:false,
-					baseDir:'javascript/'
-				}
+					baseDir:'javascript/',
+					watch : "typescript/TiGEngine/**/*.ts",
+					fast : "never"	
+				},
+				
 			}
 		}
 	});

@@ -18,6 +18,7 @@ class Sprite {
     }
 
     constructor(asset_key : string){
+        console.info('init sprite', asset_key);
         this.animationIndex = -1;
         this.SourceRectangle = new Rectangle({x:0,y:0,width:-1,height:-1});
         this.Size = {width:-1,height:-1};
