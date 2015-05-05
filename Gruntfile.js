@@ -4,8 +4,10 @@ module.exports = function(grunt) {
 		ts: {
 			default : {
 				src: ["typescript/TiGEngine/**/*.ts", "!node_modules/**/*.ts"],
+				reference : '../CardGame/thegame/public/typescripts/tigEngine.d.ts',
 				out:'../CardGame/thegame/public/javascripts/tigEngine.js',
-				reference : '../CardGame/thegame/public/typescripts/tigEngine.d.ts',				
+//				reference : '../CardGame/thegame/public/typescripts/tigEngine.d.ts', 				
+//				declaration : true,
 				options:{
 					module: "amd" | "commonjs" | "",
 					sourceMap:false,

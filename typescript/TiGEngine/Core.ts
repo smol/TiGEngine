@@ -128,7 +128,7 @@ class Core {
         function draw(gameObjects : any[]){
     		for (var i = 0; i < gameObjects.length; i++){
     			gameObjects[i].Draw();
-    			if (gameObjects[i].children) {
+    			if (gameObjects[i].children && gameObjects[i].children.length > 0) {
     				draw(gameObjects[i].children);
     			}
     		}

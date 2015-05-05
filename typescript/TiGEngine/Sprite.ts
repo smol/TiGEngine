@@ -39,6 +39,8 @@ class Sprite {
 
             if (this.SourceRectangle.height == -1)
                 this.SourceRectangle.height = this.image.Height;
+				
+			this.isLoaded = true;
         });
     }
 

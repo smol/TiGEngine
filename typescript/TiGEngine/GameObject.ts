@@ -37,7 +37,7 @@ class GameObject {
         } else {
             if (this.isHover)
                 this.OnExit();
-            this.isHover = false;
+        	this.isHover = false;
         }
 
     }
@@ -58,7 +58,6 @@ class GameObject {
     }
 
     public Draw() {
-        
     }
 
     public Update() {
